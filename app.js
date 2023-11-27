@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function () {
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
@@ -16,8 +17,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 let files = document.querySelectorAll(".file_name");
-let index;
 
+
+function saveFile(){
+    let content = ace.createEditSession("some");
+}
+
+setInterval(saveFile,1000);
 
 function removeActive(){
     files.forEach((elem)=>{
@@ -30,7 +36,13 @@ files.forEach((elem)=>{
     elem.addEventListener("click",()=>{
         removeActive();
         elem.classList.add("active");
+        showContent();
     })
 })
 
+function showContent(){
+    files.forEach((elem)=>{
+        editor.setSession(content);
+    })
+}
 
